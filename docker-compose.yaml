@@ -1,0 +1,37 @@
+services:
+  app:
+    build: .
+    restart: always
+    container_name: bill_track_app
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=${DB_URL}
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    container_name: bill_track_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+  web:
+    build: .
+    command: npm start
+    develop:
+      watch:
+        - action: sync
+          path: ./web
+          target: /src/web
+          ignore:
+            - node_modules/
