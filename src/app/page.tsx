@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 export default function Home() {
   return (
     <div className="bg-white min-h-screen">
-      <Navbar className="mb-10" />
+      <Navbar className="mb-10" isAdd={false} />
       <DashboardCards
         totalMonthlyExpenses={199}
         totalSubscriptions={12}
