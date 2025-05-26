@@ -9,13 +9,15 @@ interface NavbarProps {
 export default function Navbar({ className, isAdd }: NavbarProps) {
   return (
     <div
-      className={className ? "navbar shadow-sm flex" : "navbar shadow-sm flex"}
+      className={className ? "navbar border-b-1 flex" : "navbar shadow-sm flex"}
     >
-      <p className="text-black font-bold mr-10 pl-4">BillTracker</p>
+      <Link href="/">
+        <p className="text-gray-300 font-bold mr-10 pl-4">BillTracker</p>
+      </Link>
       {!isAdd && (
         <Link
           href="/add"
-          className="btn-outline btn-xs text-gray-400 hover:text-black cursor-pointer text-lg justify-end ml-auto"
+          className="btn-outline btn-xs text-gray-300 hover:text-white cursor-pointer text-lg justify-end ml-auto"
         >
           <AddSVG className="mr-4 w-8 h-8" />
         </Link>
