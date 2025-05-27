@@ -8,7 +8,7 @@ import {
 
 export const subscriptionsTable = pgTable("subscriptions", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  title: varchar({ length: 255 }).notNull(),
+  name: varchar({ length: 255 }).notNull(),
   cost: real().notNull(),
   paydate: timestamp({ mode: "string" }),
   createdAt: timestamp().defaultNow(),

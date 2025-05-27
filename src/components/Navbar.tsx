@@ -9,7 +9,11 @@ interface NavbarProps {
 export default function Navbar({ className, isAdd }: NavbarProps) {
   return (
     <div
-      className={className ? "navbar border-b-1 flex" : "navbar shadow-sm flex"}
+      className={
+        className
+          ? "navbar border-b-1 border-b-gray-500 flex"
+          : "navbar shadow-sm flex"
+      }
     >
       <Link href="/">
         <p className="text-gray-300 font-bold mr-10 pl-4">BillTracker</p>
