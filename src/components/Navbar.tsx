@@ -1,30 +1,22 @@
-import Link from "next/link";
+import { NavbarProps } from "@/types";
 import AddSVG from "./AddSVG";
-
-interface NavbarProps {
-  className?: string;
-  isAdd?: boolean;
-}
 
 export default function Navbar({ className, isAdd }: NavbarProps) {
   return (
-    <div
-      className={
-        className
-          ? "navbar border-b-1 border-b-gray-500 flex"
-          : "navbar shadow-sm flex"
-      }
-    >
-      <Link href="/">
+    <div className={`border-b-1 border-b-gray-200 py-3 flex ${className}`}>
+      <a href="/">
         <p className="text-gray-300 font-bold mr-10 pl-4">BillTracker</p>
-      </Link>
+      </a>
+      <a href="all">
+        <p className="text-gray-300 mr-10 pl-4">Your Subscriptions</p>
+      </a>
       {!isAdd && (
-        <Link
+        <a
           href="/add"
           className="btn-outline btn-xs text-gray-300 hover:text-white cursor-pointer text-lg justify-end ml-auto"
         >
           <AddSVG className="mr-4 w-8 h-8" />
-        </Link>
+        </a>
       )}
     </div>
   );
