@@ -3,7 +3,7 @@ import { TableProps } from "@/types";
 export default function Table({ className, subscriptions }: TableProps) {
   return (
     <div
-      className={`${className} rounded-2xl shadow-2xl h-full w-2/3 text-gray-200 flex items-center p-16`}
+      className={`${className} rounded-2xl shadow-2xl h-full w-2/3 text-gray-200 flex items-center p-16 mt-32`}
     >
       <table className="table">
         <thead>
@@ -13,7 +13,7 @@ export default function Table({ className, subscriptions }: TableProps) {
             <th>Due Date</th>
           </tr>
         </thead>
-        <tbody className="flex-col space-y-">
+        <tbody className="">
           {subscriptions.map((sub) => (
             <tr key={sub.id}>
               <td>{sub.name}</td>
