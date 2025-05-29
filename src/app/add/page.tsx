@@ -18,10 +18,10 @@ export default function Add() {
     await fetch("/api/subscriptions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, cost: parseFloat(cost), paydate }),
+      body: JSON.stringify({ name, cost: parseFloat(cost), plan, paydate }),
     });
 
-    router.push("/");
+    router.push("/all");
   }
 
   return (
@@ -42,7 +42,7 @@ export default function Add() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="input outline-none input-lg w-full bg-gray-700 text-white border-transparent"
+                className="input outline-none input-lg w-full bg-gray-700 text-white font-light border-transparent"
                 placeholder="e.g. Netflix"
               />
             </label>
@@ -57,7 +57,7 @@ export default function Add() {
                 required
                 min="0"
                 step="0.01"
-                className="input outline-none input-lg w-full bg-gray-700 text-gray-200 border-none"
+                className="input outline-none input-lg w-full bg-gray-700 text-gray-200 font-light border-none"
                 placeholder="e.g. 9.99"
               />
             </label>
@@ -69,7 +69,7 @@ export default function Add() {
                 className={
                   `btn border-none rounded-xl p-2 cursor-pointer ` +
                   (plan === "monthly"
-                    ? "bg-blue-700 text-white"
+                    ? "bg-blue-700 text-gray-200"
                     : "bg-gray-500 hover:bg-blue-700")
                 }
               >
@@ -91,14 +91,14 @@ export default function Add() {
             </div>
             <label className="form-control w-full">
               <span className="label-text mb-2 text-xl text-gray-200">
-                Due Date
+                Last time you paid
               </span>
               <input
                 type="date"
                 value={paydate}
                 onChange={(e) => setpaydate(e.target.value)}
                 required
-                className="input outline-none input-lg w-full bg-gray-700 text-gray-200 border-none"
+                className="input outline-none input-lg w-full bg-gray-700 text-gray-400 font-light border-none"
               />
             </label>
             <button
