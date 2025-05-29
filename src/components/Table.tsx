@@ -10,6 +10,7 @@ export default function Table({ className, subscriptions }: TableProps) {
           <tr>
             <th>Name</th>
             <th>Cost</th>
+            <th>Plan</th>
             <th>Due Date</th>
           </tr>
         </thead>
@@ -21,6 +22,7 @@ export default function Table({ className, subscriptions }: TableProps) {
             >
               <td>{sub.name}</td>
               <td>{sub.cost}</td>
+              <td>{sub.plan.charAt(0).toUpperCase() + sub.plan.slice(1)}</td>
               <td>{sub.paydate.slice(0, 10)}</td>
             </tr>
           ))}

@@ -14,6 +14,7 @@ export default function Add() {
   const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    console.log(plan);
     e.preventDefault();
     await fetch("/api/subscriptions", {
       method: "POST",

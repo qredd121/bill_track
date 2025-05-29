@@ -18,6 +18,7 @@ export interface Subscription {
   id: number;
   name: string;
   cost: number;
+  plan: Plan;
   paydate: string;
 }
 

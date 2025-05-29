@@ -8,10 +8,10 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const { name, cost, paydate } = await request.json();
+  const { name, cost, plan, paydate } = await request.json();
   const result = await db
     .insert(subscriptionsTable)
-    .values({ name, cost, paydate })
+    .values({ name, cost, plan, paydate })
     .returning();
 
   return NextResponse.json(result[0]);
