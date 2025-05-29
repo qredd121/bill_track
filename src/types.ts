@@ -25,3 +25,5 @@ export interface TableProps {
   subscriptions: Subscription[];
   className?: string;
 }
+
+export type Plan = "monthly" | "annual";

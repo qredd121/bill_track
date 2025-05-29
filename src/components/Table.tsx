@@ -15,7 +15,10 @@ export default function Table({ className, subscriptions }: TableProps) {
         </thead>
         <tbody className="">
           {subscriptions.map((sub) => (
-            <tr key={sub.id} className="text-xl">
+            <tr
+              key={sub.id}
+              className="text-xl cursor-pointer hover:text-gray-400"
+            >
               <td>{sub.name}</td>
               <td>{sub.cost}</td>
               <td>{sub.paydate.slice(0, 10)}</td>

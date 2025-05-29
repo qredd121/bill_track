@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
+import { Plan } from "@/types";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -8,10 +9,11 @@ export default function Add() {
   const [name, setName] = useState("");
   const [cost, setCost] = useState("");
   const [paydate, setpaydate] = useState("");
+  const [plan, setPlan] = useState<Plan>("monthly");
 
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     await fetch("/api/subscriptions", {
       method: "POST",
@@ -20,7 +22,7 @@ export default function Add() {
     });
 
     router.push("/");
-  };
+  }
 
   return (
     <div className="min-h-screen bg-gray-700">
@@ -59,6 +61,34 @@ export default function Add() {
                 placeholder="e.g. 9.99"
               />
             </label>
+            <div className="flex gap gap-4">
+              <a
+                onClick={() =>
+                  plan === "monthly" ? setPlan("annual") : setPlan("monthly")
+                }
+                className={
+                  `btn border-none rounded-xl p-2 cursor-pointer ` +
+                  (plan === "monthly"
+                    ? "bg-blue-700 text-white"
+                    : "bg-gray-500 hover:bg-blue-700")
+                }
+              >
+                Monthly
+              </a>
+              <a
+                onClick={() =>
+                  plan === "monthly" ? setPlan("annual") : setPlan("monthly")
+                }
+                className={
+                  `btn border-none rounded-xl p-2 cursor-pointer ` +
+                  (plan === "annual"
+                    ? "bg-blue-700 text-white"
+                    : "bg-gray-500 hover:bg-blue-700")
+                }
+              >
+                Annual
+              </a>
+            </div>
             <label className="form-control w-full">
               <span className="label-text mb-2 text-xl text-gray-200">
                 Due Date
@@ -73,7 +103,7 @@ export default function Add() {
             </label>
             <button
               type="submit"
-              className="btn btn-primary btn-lg mt-8 bg-blue-800 text-gray-200 border-blue-600 hover:bg-blue-700"
+              className="btn btn-primary btn-lg mt-8 text-gray-200 bg-blue-600 hover:bg-blue-700"
             >
               Add Subscription
             </button>
