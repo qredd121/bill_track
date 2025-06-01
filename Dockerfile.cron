@@ -1,6 +1,11 @@
 FROM alpine
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install
-COPY scripts/ ./scripts/
-CMD ["sh", "./run-job.sh"]
+RUN apk add --no-cache npm \
+  && npm config set loglevel error \
+  && npm install
+COPY src/scripts/ ./src/scripts/
+COPY src/scripts/run-monthly.sh src/scripts/run-annual.sh /app/
+RUN chmod +x /app/run-monthly.sh /app/run-annual.sh
+COPY ./src/scripts/crontab.txt /etc/crontabs/root
+CMD ["crond", "-f", "-d", "8"]
