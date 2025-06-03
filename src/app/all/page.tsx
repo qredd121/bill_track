@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
+import NoSubscriptions from "@/components/NoSubscriptions";
 import Table from "@/components/Table";
 import { Subscription } from "@/types";
 import { useEffect, useState } from "react";
@@ -22,12 +23,7 @@ export default function All() {
           <Table subscriptions={subscriptions} />
         </div>
       )}
-      {subscriptions.length == 0 && (
-        <div className="flex flex-col items-center inset-0 my-32">
-          <p>You don't have any Subscriptions added yet</p>
-          <p>Press + symbol in the navbar to add subscription</p>
-        </div>
-      )}
+      {subscriptions.length == 0 && <NoSubscriptions />}
     </div>
   );
 }

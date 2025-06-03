@@ -4,9 +4,9 @@ export interface NextPaymentDue {
 }
 
 export interface DashboardCardsProps {
-  totalMonthlyExpenses: number;
+  totalMonthlyExpenses: string;
   totalSubscriptions: number;
-  nextPaymentDue: NextPaymentDue;
+  nextPaymentDue: string;
 }
 
 export interface NavbarProps {

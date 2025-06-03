@@ -19,7 +19,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 
       <div className="card inset-shadow-sm bg-gray-700 rounded-2xl shadow-2xl">
         <div className="card-body">
-          <h2 className="card-title text-gray-200">All Subscriptions</h2>
+          <h2 className="card-title text-gray-200">Total Subscriptions</h2>
           <p className="text-2xl font-bold text-gray-400">
             {totalSubscriptions}
           </p>
@@ -30,7 +30,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         <div className="card-body">
           <h2 className="card-title text-200">Next Payment Due</h2>
           <p className="text-2xl font-bold text-gray-400">
-            ${nextPaymentDue.amount}
+            {nextPaymentDue.slice(0, 10)}
           </p>
         </div>
       </div>
