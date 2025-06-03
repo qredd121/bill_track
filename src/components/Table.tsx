@@ -21,7 +21,7 @@ export default function Table({ className, subscriptions }: TableProps) {
               className="text-xl cursor-pointer hover:text-gray-400"
             >
               <td>{sub.name}</td>
-              <td>{sub.cost}</td>
+              <td>{sub.cost.toFixed(2)}</td>
               <td>{sub.plan.charAt(0).toUpperCase() + sub.plan.slice(1)}</td>
               <td>{sub.paydate.slice(0, 10)}</td>
             </tr>
