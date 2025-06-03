@@ -31,9 +31,12 @@ export async function GET() {
     );
 
   const nextPayRes = await db
-    .select({ nextDate: max(subscriptionsTable.paydate) })
+    .select({ nextDate: subscriptionsTable.paydate })
     .from(subscriptionsTable)
-    .where(gte(subscriptionsTable.paydate, sql`now()`));
+    .orderBy(
+      sql`ABS(DATE_PART('day', ${subscriptionsTable.paydate} - CURRENT_DATE))`
+    )
+    .limit(1);
 
   return Response.json({
     total: countRes[0].count || 0,
