@@ -1,3 +1,3 @@
-fetch(`http://localhost:3000/api/subscriptions/update-monthly`, {
-  method: "POST",
-});
+const { updateMonthly } = require("../handlers/update-handler");
+
+updateMonthly();
