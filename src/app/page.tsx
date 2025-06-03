@@ -13,7 +13,7 @@ export default function Home() {
     fetch("api/subscriptions/main-page")
       .then((res) => res.json())
       .then((data) => setComponents(data));
-  });
+  }, []);
 
   return (
     <div className="bg-gray-700 min-h-screen">
