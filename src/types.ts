@@ -28,3 +28,9 @@ export interface TableProps {
 }
 
 export type Plan = "monthly" | "annual";
+
+export interface mainPage {
+  total: number;
+  totalMonthlyExpenses: string;
+  nextPay: string;
+}

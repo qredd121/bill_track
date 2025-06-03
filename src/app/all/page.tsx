@@ -17,9 +17,17 @@ export default function All() {
   return (
     <div className="bg-gray-700 min-h-screen">
       <Navbar />
-      <div className="flex items-center justify-center inset-0">
-        <Table subscriptions={subscriptions} />
-      </div>
+      {subscriptions.length > 0 && (
+        <div className="flex items-center justify-center inset-0">
+          <Table subscriptions={subscriptions} />
+        </div>
+      )}
+      {subscriptions.length == 0 && (
+        <div className="flex flex-col items-center inset-0 my-32">
+          <p>You don't have any Subscriptions added yet</p>
+          <p>Press + symbol in the navbar to add subscription</p>
+        </div>
+      )}
     </div>
   );
 }
