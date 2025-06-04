@@ -35,8 +35,15 @@ export interface mainPage {
   nextPay: string;
 }
 
+export interface CreateSubscription {
+  name: string;
+  cost: string;
+  plan: Plan;
+  paydate: string;
+}
+
 export interface SubscriptionCardProps {
-  handleSubmit: (name: string, cost: string, plan: Plan, paydate: string) => {};
+  id?: string;
   oldName?: string;
   oldCost?: string;
   oldPlan?: Plan;

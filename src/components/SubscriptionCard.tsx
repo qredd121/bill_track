@@ -1,8 +1,10 @@
-import { Plan, SubscriptionCardProps } from "@/types";
+"use client";
+
+import { CreateSubscription, Plan, SubscriptionCardProps } from "@/types";
 import { useState } from "react";
 
 export default function SubscriptionCard({
-  handleSubmit,
+  id,
   oldName,
   oldCost,
   oldPlan,
@@ -13,6 +15,19 @@ export default function SubscriptionCard({
   const [plan, setPlan] = useState<Plan>(oldPlan || "monthly");
   const [paydate, setPaydate] = useState(oldPaydate || "");
 
+  async function handleSubmit({
+    name,
+    cost,
+    plan,
+    paydate,
+  }: CreateSubscription) {
+    await fetch(`/api/subscriptions/${id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, cost, plan, paydate }),
+    });
+  }
+
   return (
     <div className="flex items-center justify-center bg-gray-700 mt-16">
       <div className="w-full max-w-3xl p-16 border border-gray-700 rounded-2xl shadow-2xl ">
@@ -22,7 +37,7 @@ export default function SubscriptionCard({
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            handleSubmit(name, cost, plan, paydate);
+            handleSubmit({ name, cost, plan, paydate });
           }}
           className="flex flex-col gap-10"
         >
