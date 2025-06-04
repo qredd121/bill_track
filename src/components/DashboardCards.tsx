@@ -2,11 +2,11 @@ import { DashboardCardsProps } from "@/types";
 import React from "react";
 import Timer from "./Timer";
 
-const DashboardCards: React.FC<DashboardCardsProps> = ({
+export default function DashboardCards({
   totalMonthlyExpenses,
   totalSubscriptions,
   nextPaymentDue,
-}) => {
+}: DashboardCardsProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
       <div className="card bg-gray-700 rounded-2xl shadow-2xl">
@@ -42,6 +42,4 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
       </div>
     </div>
   );
-};
-
-export default DashboardCards;
+}

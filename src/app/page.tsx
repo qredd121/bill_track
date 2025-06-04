@@ -1,6 +1,6 @@
 "use client";
 
-import DashboardCards from "@/components/DasboardCards";
+import DashboardCards from "@/components/DashboardCards";
 import Navbar from "@/components/Navbar";
 import NoSubscriptions from "@/components/NoSubscriptions";
 import { mainPage } from "@/types";
