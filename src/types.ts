@@ -20,6 +20,7 @@ export interface Subscription {
   cost: number;
   plan: Plan;
   paydate: string;
+  createdAt: Date;
 }
 
 export interface TableProps {
@@ -37,15 +38,12 @@ export interface mainPage {
 
 export interface CreateSubscription {
   name: string;
-  cost: string;
+  cost: number;
   plan: Plan;
   paydate: string;
 }
 
 export interface SubscriptionCardProps {
-  id?: string;
-  oldName?: string;
-  oldCost?: string;
-  oldPlan?: Plan;
-  oldPaydate?: string;
+  handleSubmit: (newSubscripton: CreateSubscription) => void;
+  oldSubscriptionData?: Subscription;
 }

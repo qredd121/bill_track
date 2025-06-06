@@ -1,32 +1,21 @@
 "use client";
 
-import { CreateSubscription, Plan, SubscriptionCardProps } from "@/types";
+import { Plan, SubscriptionCardProps } from "@/types";
 import { useState } from "react";
 
 export default function SubscriptionCard({
-  id,
-  oldName,
-  oldCost,
-  oldPlan,
-  oldPaydate,
+  handleSubmit,
+  oldSubscriptionData,
 }: SubscriptionCardProps) {
-  const [name, setName] = useState(oldName || "");
-  const [cost, setCost] = useState(oldCost || "");
-  const [plan, setPlan] = useState<Plan>(oldPlan || "monthly");
-  const [paydate, setPaydate] = useState(oldPaydate || "");
-
-  async function handleSubmit({
-    name,
-    cost,
-    plan,
-    paydate,
-  }: CreateSubscription) {
-    await fetch(`/api/subscriptions/${id}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, cost, plan, paydate }),
-    });
-  }
+  console.log(oldSubscriptionData);
+  const [name, setName] = useState(oldSubscriptionData?.name || "");
+  const [cost, setCost] = useState(oldSubscriptionData?.cost || 0);
+  const [plan, setPlan] = useState<Plan>(
+    oldSubscriptionData?.plan || "monthly"
+  );
+  const [paydate, setPaydate] = useState(
+    oldSubscriptionData?.paydate.split(/[T ]/)[0] || ""
+  );
 
   return (
     <div className="flex items-center justify-center bg-gray-700 mt-16">
@@ -59,7 +48,7 @@ export default function SubscriptionCard({
             <input
               type="number"
               value={cost}
-              onChange={(e) => setCost(e.target.value)}
+              onChange={(e) => setCost(parseFloat(e.target.value))}
               required
               min="0"
               step="0.01"
