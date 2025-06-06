@@ -36,6 +36,8 @@ export default function Page({ params }: { params: Usable<{ id: string }> }) {
       <Navbar />
       {subscription ? (
         <SubscriptionCard
+          title="Change Subscription"
+          buttonTitle="Save changes"
           handleSubmit={handleSubmit}
           oldSubscriptionData={subscription}
         />

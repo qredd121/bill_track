@@ -23,7 +23,11 @@ export default function Add() {
   return (
     <div className="min-h-screen bg-gray-700">
       <Navbar isAdd={true} />
-      <SubscriptionCard handleSubmit={handleSubmit} />
+      <SubscriptionCard
+        title="Add New Subscription"
+        buttonTitle="Add Subscription"
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 }

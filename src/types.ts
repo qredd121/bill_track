@@ -46,4 +46,6 @@ export interface CreateSubscription {
 export interface SubscriptionCardProps {
   handleSubmit: (newSubscripton: CreateSubscription) => void;
   oldSubscriptionData?: Subscription;
+  title: string;
+  buttonTitle: string;
 }

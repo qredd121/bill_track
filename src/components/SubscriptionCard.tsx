@@ -6,6 +6,8 @@ import { useState } from "react";
 export default function SubscriptionCard({
   handleSubmit,
   oldSubscriptionData,
+  title,
+  buttonTitle,
 }: SubscriptionCardProps) {
   console.log(oldSubscriptionData);
   const [name, setName] = useState(oldSubscriptionData?.name || "");
@@ -21,7 +23,7 @@ export default function SubscriptionCard({
     <div className="flex items-center justify-center bg-gray-700 mt-16">
       <div className="w-full max-w-3xl p-16 border border-gray-700 rounded-2xl shadow-2xl ">
         <h2 className="text-5xl font-bold mb-12 text-center text-gray-200">
-          Add New Subscription
+          {title}
         </h2>
         <form
           onSubmit={(e) => {
@@ -100,7 +102,7 @@ export default function SubscriptionCard({
             type="submit"
             className="btn btn-primary btn-lg mt-8 text-gray-200 bg-blue-600 hover:bg-blue-700"
           >
-            Add Subscription
+            {buttonTitle}
           </button>
         </form>
       </div>
