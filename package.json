@@ -10,13 +10,14 @@
   },
   "dependencies": {
     "@next/env": "^15.4.0-canary.51",
+    "@types/ws": "^8.18.1",
     "daisyui": "^5.0.37",
     "drizzle-orm": "^0.43.1",
     "next": "15.3.2",
     "pg": "^8.16.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "ts-node": "^10.9.2"
+    "ws": "^8.18.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

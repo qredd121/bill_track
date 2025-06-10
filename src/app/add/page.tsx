@@ -18,6 +18,8 @@ export default function Add() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, cost, plan, paydate }),
     });
+
+    await fetch("http://localhost:3001/message");
     router.push("/all");
   }
   return (

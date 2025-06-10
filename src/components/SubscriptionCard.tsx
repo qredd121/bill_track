@@ -9,7 +9,6 @@ export default function SubscriptionCard({
   title,
   buttonTitle,
 }: SubscriptionCardProps) {
-  console.log(oldSubscriptionData);
   const [name, setName] = useState(oldSubscriptionData?.name || "");
   const [cost, setCost] = useState(oldSubscriptionData?.cost || 0);
   const [plan, setPlan] = useState<Plan>(

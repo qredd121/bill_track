@@ -1,19 +1,19 @@
 "use client";
-
 import DashboardCards from "@/components/DashboardCards";
 import Navbar from "@/components/Navbar";
 import NoSubscriptions from "@/components/NoSubscriptions";
+import { MessageContext } from "@/components/WsProvider";
 import { mainPage } from "@/types";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function Home() {
   const [components, setComponents] = useState<mainPage>();
-
+  const message = useContext(MessageContext);
   useEffect(() => {
     fetch("api/subscriptions/main-page")
       .then((res) => res.json())
       .then((data) => setComponents(data));
-  }, []);
+  }, [message]);
 
   return (
     <div className="bg-gray-700 min-h-screen">

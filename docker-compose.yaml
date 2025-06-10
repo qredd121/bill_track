@@ -31,7 +31,13 @@ services:
       context: .
       dockerfile: Dockerfile.cron
     restart: always
-
+  ws:
+    build:
+      context: .
+      dockerfile: Dockerfile.ws
+    restart: always
+    ports:
+      - "3001:3001"
   web:
     build: .
     command: npm start

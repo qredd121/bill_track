@@ -1,7 +1,19 @@
 import { db } from "@/db";
 import { subscriptionsTable } from "@/db/schema";
 import { mainPage } from "@/types";
-import { and, count, eq, gte, lt, max, or, sql, sum } from "drizzle-orm";
+import {
+  and,
+  count,
+  eq,
+  gt,
+  gte,
+  lt,
+  max,
+  min,
+  or,
+  sql,
+  sum,
+} from "drizzle-orm";
 
 export async function GET() {
   const countRes = await db.select({ count: count() }).from(subscriptionsTable);
@@ -31,12 +43,9 @@ export async function GET() {
     );
 
   const nextPayRes = await db
-    .select({ nextDate: subscriptionsTable.paydate })
+    .select({ nextDate: min(subscriptionsTable.paydate) })
     .from(subscriptionsTable)
-    .orderBy(
-      sql`ABS(DATE_PART('day', ${subscriptionsTable.paydate} - CURRENT_DATE))`
-    )
-    .limit(1);
+    .where(gt(subscriptionsTable.paydate, sql`CURRENT_DATE`));
 
   return Response.json({
     total: countRes[0].count || 0,
