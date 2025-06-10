@@ -3,17 +3,19 @@
 import Navbar from "@/components/Navbar";
 import NoSubscriptions from "@/components/NoSubscriptions";
 import Table from "@/components/Table";
+import { MessageContext } from "@/components/WsProvider";
 import { Subscription } from "@/types";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function All() {
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
+  const message = useContext(MessageContext);
 
   useEffect(() => {
     fetch("/api/subscriptions")
       .then((res) => res.json())
       .then((data) => setSubscriptions(data));
-  }, []);
+  }, [message]);
 
   return (
     <div className="bg-gray-700 min-h-screen">
