@@ -1,5 +1,6 @@
 "use client";
 
+import Loader from "@/components/Loader";
 import Navbar from "@/components/Navbar";
 import SubscriptionCard from "@/components/SubscriptionCard";
 import { CreateSubscription, Subscription } from "@/types";
@@ -32,7 +33,7 @@ export default function Page({ params }: { params: Usable<{ id: string }> }) {
     router.push("/all");
   }
   return (
-    <div className="min-h-screen bg-gray-700">
+    <div className="min-h-screen bg-gray-700 relative">
       <Navbar />
       {subscription ? (
         <SubscriptionCard
@@ -42,7 +43,7 @@ export default function Page({ params }: { params: Usable<{ id: string }> }) {
           oldSubscriptionData={subscription}
         />
       ) : (
-        <div className="text-white text-center mt-8">Loading...</div>
+        <Loader className="justify-center absolute right-1/2 bottom-1/2" />
       )}
     </div>
   );

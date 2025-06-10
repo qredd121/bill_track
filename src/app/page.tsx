@@ -1,5 +1,6 @@
 "use client";
 import DashboardCards from "@/components/DashboardCards";
+import Loader from "@/components/Loader";
 import Navbar from "@/components/Navbar";
 import NoSubscriptions from "@/components/NoSubscriptions";
 import { MessageContext } from "@/components/WsProvider";
@@ -25,7 +26,7 @@ export default function Home() {
           nextPaymentDue={components.nextPay}
         />
       )}
-
+      : {<Loader className="justify-center absolute right-1/2 bottom-1/2" />}
       {components && components.total === 0 && <NoSubscriptions />}
     </div>
   );
