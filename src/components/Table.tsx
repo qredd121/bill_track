@@ -1,7 +1,12 @@
 import { TableProps } from "@/types";
 import { useRouter } from "next/navigation";
+import BinSVG from "./BinSVG";
 
-export default function Table({ className, subscriptions }: TableProps) {
+export default function Table({
+  handleDeletion,
+  className,
+  subscriptions,
+}: TableProps) {
   const router = useRouter();
   return (
     <div
@@ -27,6 +32,16 @@ export default function Table({ className, subscriptions }: TableProps) {
               <td>{sub.cost.toFixed(2)}</td>
               <td>{sub.plan.charAt(0).toUpperCase() + sub.plan.slice(1)}</td>
               <td>{sub.paydate.slice(0, 10)}</td>
+              <td
+                className="hover:text-red-400"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleDeletion(sub.id.toString());
+                }}
+              >
+                <BinSVG />
+              </td>
             </tr>
           ))}
         </tbody>

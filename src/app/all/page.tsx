@@ -17,12 +17,20 @@ export default function All() {
       .then((data) => setSubscriptions(data));
   }, [message]);
 
+  async function handleDeletion(id: string) {
+    await fetch(`/api/subscriptions/${id}`, { method: "DELETE" });
+    await fetch("http://localhost:3001/message", { method: "GET" });
+  }
+
   return (
     <div className="bg-gray-700 min-h-screen">
       <Navbar />
       {subscriptions.length > 0 && (
         <div className="flex items-center justify-center inset-0">
-          <Table subscriptions={subscriptions} />
+          <Table
+            handleDeletion={handleDeletion}
+            subscriptions={subscriptions}
+          />
         </div>
       )}
       {subscriptions.length == 0 && <NoSubscriptions />}

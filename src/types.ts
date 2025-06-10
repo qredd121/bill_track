@@ -24,6 +24,7 @@ export interface Subscription {
 }
 
 export interface TableProps {
+  handleDeletion: (id: string) => void;
   subscriptions: Subscription[];
   className?: string;
 }

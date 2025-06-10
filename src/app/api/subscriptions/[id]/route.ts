@@ -21,8 +21,22 @@ export async function POST(
 ) {
   const id = parseInt(params.id);
   const { name, cost, plan, paydate }: Subscription = await request.json();
-  return await db
+  const res = await db
     .update(subscriptionsTable)
     .set({ name, cost, plan, paydate })
     .where(eq(subscriptionsTable.id, id));
+
+  return Response.json(res);
+}
+
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
+  const id = parseInt(params.id);
+  const res = await db
+    .delete(subscriptionsTable)
+    .where(eq(subscriptionsTable.id, id));
+
+  return Response.json(res);
 }
