@@ -1,5 +1,6 @@
 "use client";
 
+import Loader from "@/components/Loader";
 import Navbar from "@/components/Navbar";
 import NoSubscriptions from "@/components/NoSubscriptions";
 import Table from "@/components/Table";
@@ -34,6 +35,9 @@ export default function All() {
         </div>
       )}
       {subscriptions.length == 0 && <NoSubscriptions />}
+      {!subscriptions && (
+        <Loader className="justify-center absolute right-1/2 bottom-1/2" />
+      )}
     </div>
   );
 }

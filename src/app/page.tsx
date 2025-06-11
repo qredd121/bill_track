@@ -26,8 +26,10 @@ export default function Home() {
           nextPaymentDue={components.nextPay}
         />
       )}
-      : {<Loader className="justify-center absolute right-1/2 bottom-1/2" />}
       {components && components.total === 0 && <NoSubscriptions />}
+      {!components && (
+        <Loader className="justify-center absolute right-1/2 bottom-1/2" />
+      )}
     </div>
   );
 }
