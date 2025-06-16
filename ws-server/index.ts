@@ -1,5 +1,7 @@
 import * as http from "http";
 import { WebSocketServer } from "ws";
+import "../env-config";
+import { hostname } from "os";
 
 const server = http.createServer(function (
   req: http.IncomingMessage,
@@ -7,7 +9,10 @@ const server = http.createServer(function (
 ) {
   const url = req.url;
 
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000/");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    `http://${process.env.HOSTNAME}:3000/`
+  );
   res.setHeader("Access-Control-Allow-Methods", "GET");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
@@ -28,6 +33,6 @@ wss.on("connection", function conection(ws) {
   ws.send("Connection established");
 });
 
-server.listen(3001, function () {
+server.listen({ hostname: process.env.HOSTNAME, port: 3001 }, function () {
   console.log("Server is running in port 3001");
 });
