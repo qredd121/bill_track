@@ -13,7 +13,9 @@ export default function Page({ params }: { params: Usable<{ id: string }> }) {
   const router = useRouter();
   useEffect(() => {
     async function fetchSubscription() {
-      const res = await fetch(`/api/subscriptions/${id}`);
+      const res = await fetch(
+        `http://${process.env.HOSTNAME}:3000/api/subscriptions/${id}`
+      );
       const data = await res.json();
       setSubscription(data);
     }

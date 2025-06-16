@@ -19,7 +19,7 @@ export default function Add() {
       body: JSON.stringify({ name, cost, plan, paydate }),
     });
 
-    await fetch("http://localhost:3001/message");
+    await fetch(`http://${process.env.HOSTNAME}:3001/message`);
     router.push("/all");
   }
   return (
