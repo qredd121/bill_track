@@ -4,6 +4,8 @@ services:
     restart: always
     container_name: bill_track_app
     working_dir: /app
+    env_file:
+      - ".env"
     volumes:
       - .:/app
       - /app/node_modules
