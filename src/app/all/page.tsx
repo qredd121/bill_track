@@ -19,7 +19,7 @@ export default function All() {
   }, [message]);
 
   async function handleDeletion(id: string) {
-    await fetch(`http://${process.env.HOSTNAME}:3000/api/subscriptions/${id}`, {
+    await fetch(`/api/subscriptions/${id}`, {
       method: "DELETE",
     });
     await fetch(`http://${process.env.HOSTNAME}:3001/message`, {
