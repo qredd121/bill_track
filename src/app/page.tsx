@@ -11,9 +11,7 @@ export default function Home() {
   const [components, setComponents] = useState<mainPage>();
   const message = useContext(MessageContext);
   useEffect(() => {
-    fetch(
-      `http://${process.env.NEXT_PUBLIC_HOSTNAME}:3000/api/subscriptions/main-page`
-    )
+    fetch(`/api/subscriptions/main-page`)
       .then((res) => res.json())
       .then((data) => setComponents(data));
   }, [message]);
