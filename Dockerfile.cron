@@ -1,9 +1,8 @@
 FROM alpine
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN apk add --no-cache npm \
-  && npm config set loglevel error \
-  && npm install
+RUN apk add --no-cache nodejs npm \
+  && npm config set loglevel verbose \
 COPY src/scripts/ ./src/scripts/
 COPY src/scripts/run-monthly.sh src/scripts/run-annual.sh /app/
 RUN chmod +x /app/run-monthly.sh /app/run-annual.sh
