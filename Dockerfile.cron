@@ -2,7 +2,7 @@ FROM node:20-alpine
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN apk add --no-cache nodejs npm python3 make g++ \
-  && npm config set loglevel error \
+  && npm config set loglevel verbose \
   && npm install
 COPY src/scripts/ ./src/scripts/
 COPY src/scripts/run-monthly.sh src/scripts/run-annual.sh /app/
