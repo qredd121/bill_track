@@ -8,7 +8,6 @@ import {
   gt,
   gte,
   lt,
-  max,
   min,
   or,
   sql,
