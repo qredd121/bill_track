@@ -1,7 +1,7 @@
 FROM node:20-alpine
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN apk add --no-cache nodejs npm python3 make g++ \
+RUN apk add --no-cache nodejs npm
   && npm config set loglevel verbose \
   && npm install
 COPY src/scripts/ ./src/scripts/
