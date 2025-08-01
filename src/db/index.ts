@@ -3,6 +3,6 @@ import "../../env-config";
 import { Pool } from "pg";
 
 const pool = new Pool({
-  connectionString: "postgresql://postgres:postgres@db:5432/postgres",
+  connectionString: process.env.DB_URL,
 });
 export const db = drizzle({ client: pool });
