@@ -12,8 +12,6 @@ services:
       - /app/.next
     ports:
       - "3000:3000"
-    environment:
-      - DATABASE_URL=${DB_URL}
     depends_on:
       - db
 
