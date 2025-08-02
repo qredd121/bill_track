@@ -5,7 +5,9 @@ import { createContext } from "react";
 
 export const MessageContext = createContext<boolean>(false);
 
-export const socket = new WebSocket(`ws://${process.env.WSS_HOSTNAME}:3001`);
+export const socket = new WebSocket(
+  `ws://${process.env.NEXT_PUBLIC_WSS_HOSTNAME}:3001`
+);
 socket.addEventListener("open", () => {
   socket.send("Connected to server");
 });
