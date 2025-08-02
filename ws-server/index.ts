@@ -35,6 +35,8 @@ wss.on("connection", function conection(ws) {
 server.listen(
   { hostname: process.env.NEXT_PUBLIC_WSS_HOSTNAME, port: 3001 },
   function () {
-    console.log("Server is running in port 3001");
+    console.log(
+      `Server is running on port 3001 and hostname is ${process.env.NEXT_PUBLIC_WSS_HOSTNAME}`
+    );
   }
 );
