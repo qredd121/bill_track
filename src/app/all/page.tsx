@@ -22,7 +22,7 @@ export default function All() {
     await fetch(`/api/subscriptions/${id}`, {
       method: "DELETE",
     });
-    await fetch(`http://${process.env.HOSTNAME}:3001/message`, {
+    await fetch(`http://${process.env.NEXT_PUBLIC_WSS_HOSTNAME}:3001/message`, {
       method: "GET",
     });
   }
