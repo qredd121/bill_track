@@ -1,7 +1,6 @@
 import * as http from "http";
 import { WebSocketServer } from "ws";
 import "../env-config";
-import { hostname } from "os";
 
 const server = http.createServer(function (
   req: http.IncomingMessage,
