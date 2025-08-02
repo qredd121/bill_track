@@ -1,6 +1,5 @@
 "use client";
 
-import "../../env-config";
 import { useEffect, useState } from "react";
 import { createContext } from "react";
 
