@@ -36,7 +36,7 @@ server.listen(
   { hostname: process.env.NEXT_PUBLIC_WSS_HOSTNAME, port: 3001 },
   function () {
     console.log(
-      `Server is running on port 3001 and hostname is ${process.env.NEXT_PUBLIC_WSS_HOSTNAME}`
+      `Server is running on port 3001 and hostname is ${process.env.PUBLIC_WSS_HOSTNAME}`
     );
   }
 );
