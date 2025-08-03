@@ -1,6 +1,6 @@
 export function updateMonthly() {
   fetch(
-    `http://${process.env.NEXT_PUBLIC_MAIN_HOSTNAME}:3000/api/subscriptions/update-monthly`,
+    `http://${process.env.NEXT_PUBLIC_MAIN_HOSTNAME}/api/subscriptions/update-monthly`,
     {
       method: "POST",
     }
@@ -9,7 +9,7 @@ export function updateMonthly() {
 
 export function updateAnnual() {
   fetch(
-    `http://${process.env.NEXT_PUBLIC_MAIN_HOSTNAME}:3000/api/subscriptions/update-annual`,
+    `http://${process.env.NEXT_PUBLIC_MAIN_HOSTNAME}/api/subscriptions/update-annual`,
     {
       method: "POST",
     }
