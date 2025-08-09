@@ -21,8 +21,7 @@ const server = http.createServer(function (
         client.send("Database change happend");
       }
     }
-    res.writeHead(200);
-    res.end();
+    res.writeHead(200).end();
   }
 });
 

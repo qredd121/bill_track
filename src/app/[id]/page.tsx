@@ -14,7 +14,7 @@ export default function Page({ params }: { params: Usable<{ id: string }> }) {
   useEffect(() => {
     async function fetchSubscription() {
       const res = await fetch(
-        `http://${process.env.NEXT_PUBLIC_MAIN_HOSTNAME}:3000/api/subscriptions/${id}`
+        `http://${process.env.NEXT_PUBLIC_MAIN_HOSTNAME}/api/subscriptions/${id}`
       );
       const data = await res.json();
       setSubscription(data);
