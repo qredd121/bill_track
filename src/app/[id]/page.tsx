@@ -13,7 +13,6 @@ export default function Page({ params }: { params: Usable<{ id: string }> }) {
   const router = useRouter();
   useEffect(() => {
     async function fetchSubscription() {
-      console.log(process.env.NEXT_PUBLIC_MAIN_HOSTNAME);
       const res = await fetch(
         `http://${process.env.NEXT_PUBLIC_MAIN_HOSTNAME}/api/subscriptions/${id}`
       );
