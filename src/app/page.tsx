@@ -15,7 +15,6 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => setComponents(data));
   }, [message]);
-
   return (
     <div className="bg-gray-700 min-h-screen">
       <Navbar className="mb-10" isAdd={false} />
