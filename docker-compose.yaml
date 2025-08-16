@@ -31,11 +31,15 @@ services:
       context: .
       dockerfile: Dockerfile.cron
     restart: always
+    env_file:
+      - ".env"
   ws:
     build:
       context: .
       dockerfile: Dockerfile.ws
     restart: always
+    env_file:
+      - ".env"
     ports:
       - "3001:3001"
   web:
