@@ -30,12 +30,8 @@ export default function WsProvider({
   });
 
   return (
-    <html lang="en">
-      <body className="bg-accent">
-        <MessageContext.Provider value={message}>
-          {children}
-        </MessageContext.Provider>
-      </body>
-    </html>
+    <MessageContext.Provider value={message}>
+      {children}
+    </MessageContext.Provider>
   );
 }

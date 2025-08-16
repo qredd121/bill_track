@@ -17,7 +17,7 @@ export interface NavbarProps {
 export interface Subscription {
   id: number;
   name: string;
-  cost: number;
+  cost: string;
   plan: Plan;
   paydate: string;
   createdAt: Date;
@@ -39,7 +39,7 @@ export interface mainPage {
 
 export interface CreateSubscription {
   name: string;
-  cost: number;
+  cost: string;
   plan: Plan;
   paydate: string;
 }

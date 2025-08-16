@@ -15,9 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-accent">
-        <WsProvider>{children}</WsProvider>
-      </body>
+      <WsProvider>{children}</WsProvider>
     </html>
   );
 }

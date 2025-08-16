@@ -10,7 +10,7 @@ export default function SubscriptionCard({
   buttonTitle,
 }: SubscriptionCardProps) {
   const [name, setName] = useState(oldSubscriptionData?.name || "");
-  const [cost, setCost] = useState(oldSubscriptionData?.cost || 0);
+  const [cost, setCost] = useState(oldSubscriptionData?.cost || "0");
   const [plan, setPlan] = useState<Plan>(
     oldSubscriptionData?.plan || "monthly"
   );
@@ -49,7 +49,7 @@ export default function SubscriptionCard({
             <input
               type="number"
               value={cost}
-              onChange={(e) => setCost(parseFloat(e.target.value))}
+              onChange={(e) => setCost(e.target.value)}
               required
               min="0"
               step="0.01"

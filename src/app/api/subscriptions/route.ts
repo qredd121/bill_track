@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   const { name, cost, plan, paydate }: Subscription = await request.json();
   const result = await db
     .insert(subscriptionsTable)
-    .values({ name, cost, plan, paydate })
+    .values({ name, cost: parseFloat(cost), plan, paydate })
     .returning();
 
   if (plan == "monthly") updateMonthly();
