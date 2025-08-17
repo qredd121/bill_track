@@ -1,7 +1,6 @@
 "use client";
 
 import Loader from "@/components/Loader";
-import Navbar from "@/components/Navbar";
 import NoSubscriptions from "@/components/NoSubscriptions";
 import Table from "@/components/Table";
 import { MessageContext } from "@/components/WsProvider";
@@ -9,7 +8,7 @@ import { Subscription } from "@/types";
 import { useContext, useEffect, useState } from "react";
 
 export default function All() {
-  const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
+  const [subscriptions, setSubscriptions] = useState<Subscription[]>();
   const message = useContext(MessageContext);
 
   useEffect(() => {
@@ -28,20 +27,31 @@ export default function All() {
   }
 
   return (
-    <div className="bg-gray-700 min-h-screen">
-      <Navbar />
-      {subscriptions.length > 0 && (
-        <div className="flex items-center justify-center inset-0">
-          <Table
-            handleDeletion={handleDeletion}
-            subscriptions={subscriptions}
-          />
-        </div>
-      )}
-      {subscriptions.length == 0 && <NoSubscriptions />}
-      {!subscriptions && (
-        <Loader className="justify-center absolute right-1/2 bottom-1/2" />
-      )}
+    <div className="bg-base-300 min-h-screen">
+      <div className="container mx-auto px-4 py-8">
+        {subscriptions && subscriptions.length > 0 && (
+          <div className="space-y-6">
+            <div className="text-center">
+              <h1 className="text-3xl font-bold text-base-content mb-2">
+                Your Subscriptions
+              </h1>
+              <p className="text-base-content/70">
+                Manage all your recurring payments
+              </p>
+            </div>
+            <Table
+              handleDeletion={handleDeletion}
+              subscriptions={subscriptions}
+            />
+          </div>
+        )}
+        {subscriptions && subscriptions.length === 0 && <NoSubscriptions />}
+        {!subscriptions && (
+          <div className="flex justify-center items-center min-h-[50vh]">
+            <Loader />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

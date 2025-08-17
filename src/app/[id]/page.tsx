@@ -1,7 +1,6 @@
 "use client";
 
 import Loader from "@/components/Loader";
-import Navbar from "@/components/Navbar";
 import SubscriptionCard from "@/components/SubscriptionCard";
 import { CreateSubscription, Subscription } from "@/types";
 import { useRouter } from "next/navigation";
@@ -35,18 +34,21 @@ export default function Page({ params }: { params: Usable<{ id: string }> }) {
     router.push("/all");
   }
   return (
-    <div className="min-h-screen bg-gray-700 relative">
-      <Navbar />
-      {subscription ? (
-        <SubscriptionCard
-          title="Change Subscription"
-          buttonTitle="Save changes"
-          handleSubmit={handleSubmit}
-          oldSubscriptionData={subscription}
-        />
-      ) : (
-        <Loader className="justify-center absolute right-1/2 bottom-1/2" />
-      )}
+    <div className="min-h-screen bg-base-300">
+      <div className="container mx-auto px-4 py-8">
+        {subscription ? (
+          <SubscriptionCard
+            title="Edit Subscription"
+            buttonTitle="Save Changes"
+            handleSubmit={handleSubmit}
+            oldSubscriptionData={subscription}
+          />
+        ) : (
+          <div className="flex justify-center items-center min-h-[50vh]">
+            <Loader />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

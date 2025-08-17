@@ -1,6 +1,5 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
 import SubscriptionCard from "@/components/SubscriptionCard";
 import { CreateSubscription } from "@/types";
 import { useRouter } from "next/navigation";
@@ -23,13 +22,14 @@ export default function Add() {
     router.push("/all");
   }
   return (
-    <div className="min-h-screen bg-gray-700">
-      <Navbar isAdd={true} />
-      <SubscriptionCard
-        title="Add New Subscription"
-        buttonTitle="Add Subscription"
-        handleSubmit={handleSubmit}
-      />
+    <div className="min-h-screen bg-base-300">
+      <div className="container mx-auto px-4 py-8">
+        <SubscriptionCard
+          title="Add New Subscription"
+          buttonTitle="Add Subscription"
+          handleSubmit={handleSubmit}
+        />
+      </div>
     </div>
   );
 }

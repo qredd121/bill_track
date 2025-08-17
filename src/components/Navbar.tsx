@@ -1,23 +1,36 @@
-import { NavbarProps } from "@/types";
+"use client";
+
+import { usePathname } from "next/navigation";
 import AddSVG from "./AddSVG";
 
-export default function Navbar({ className, isAdd }: NavbarProps) {
+export default function Navbar({ className }: { className?: string }) {
+  const pathname = usePathname();
+  const isAddPage = pathname === "/add";
+
   return (
-    <div className={`border-b-1 border-b-gray-200 py-3 flex ${className}`}>
-      <a className="cursor-pointer" href="/">
-        <p className="text-gray-300 font-bold mr-10 pl-4">BillTracker</p>
-      </a>
-      <a className="cursor-pointer" href="all">
-        <p className="text-gray-300 mr-10 pl-4">Your Subscriptions</p>
-      </a>
-      {!isAdd && (
-        <a
-          href="/add"
-          className="btn-outline btn-xs text-gray-300 hover:text-white cursor-pointer text-lg justify-end ml-auto"
-        >
-          <AddSVG className="mr-4 w-8 h-8" />
+    <div className={`navbar bg-base-200 shadow-lg ${className || ""}`}>
+      <div className="navbar-start">
+        <a className="btn btn-ghost text-xl font-bold text-primary" href="/">
+          BillTrack
         </a>
-      )}
+      </div>
+      <div className="navbar-center">
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <a className="text-base-content hover:text-primary" href="/all">
+              Your Subscriptions
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div className="navbar-end">
+        {!isAddPage && (
+          <a href="/add" className="btn btn-primary btn-sm gap-2">
+            <AddSVG className="w-4 h-4" />
+            <span className="hidden sm:inline">Add</span>
+          </a>
+        )}
+      </div>
     </div>
   );
 }

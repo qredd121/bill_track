@@ -9,29 +9,29 @@ export default function DashboardCards({
 }: DashboardCardsProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
-      <div className="card bg-gray-700 rounded-2xl shadow-2xl">
+      <div className="card bg-base-200 shadow-xl">
         <div className="card-body">
-          <h2 className="card-title text-gray-200">Total Monthly Expenses</h2>
-          <p className="text-2xl font-bold text-gray-400">
+          <h2 className="card-title text-base-content">Total Monthly Expenses</h2>
+          <p className="text-2xl font-bold text-base-content/70">
             ${totalMonthlyExpenses}
           </p>
         </div>
       </div>
 
-      <div className="card inset-shadow-sm bg-gray-700 rounded-2xl shadow-2xl">
+      <div className="card bg-base-200 shadow-xl">
         <div className="card-body">
-          <h2 className="card-title text-gray-200">Total Subscriptions</h2>
-          <p className="text-2xl font-bold text-gray-400">
+          <h2 className="card-title text-base-content">Total Subscriptions</h2>
+          <p className="text-2xl font-bold text-base-content/70">
             {totalSubscriptions}
           </p>
         </div>
       </div>
 
-      <div className="card inset-shadow-sm bg-gray-70 rounded-2xl shadow-2xl">
+      <div className="card bg-base-200 shadow-xl">
         <div className="card-body">
-          <h2 className="card-title text-200">Next Payment Due</h2>
+          <h2 className="card-title text-base-content">Next Payment Due</h2>
           {nextPaymentDue === "" && (
-            <p className="font-bold text-xl text-gray-400">
+            <p className="text-2xl font-bold text-base-content/70">
               No upcoming payments
             </p>
           )}
@@ -41,7 +41,7 @@ export default function DashboardCards({
           {nextPaymentDue !== "" &&
             new Date(nextPaymentDue).getTime() - new Date().getTime() >
               24 * 60 * 60 * 1000 && (
-              <p className="font-bold text-xl text-gray-400">
+              <p className="text-2xl font-bold text-base-content/70">
                 {nextPaymentDue.slice(0, 10)}
               </p>
             )}

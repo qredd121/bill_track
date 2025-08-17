@@ -9,43 +9,58 @@ export default function Table({
 }: TableProps) {
   const router = useRouter();
   return (
-    <div
-      className={`${className} rounded-2xl shadow-2xl h-full w-1/2 text-gray-200 flex items-center p-16 mt-32`}
-    >
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Cost</th>
-            <th>Plan</th>
-            <th>Due Date</th>
-          </tr>
-        </thead>
-        <tbody className="">
-          {subscriptions.map((sub) => (
-            <tr
-              key={sub.id}
-              className="text-xl cursor-pointer hover:text-gray-400"
-              onClick={() => router.push(`${sub.id}`)}
-            >
-              <td>{sub.name}</td>
-              <td>{sub.cost.toFixed(2)}</td>
-              <td>{sub.plan.charAt(0).toUpperCase() + sub.plan.slice(1)}</td>
-              <td>{sub.paydate.slice(0, 10)}</td>
-              <td
-                className="hover:text-red-400"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  handleDeletion(sub.id.toString());
-                }}
-              >
-                <BinSVG />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className={`card bg-base-100 shadow-xl ${className}`}>
+      <div className="card-body p-0">
+        <div className="overflow-x-auto">
+          <table className="table">
+            <thead>
+              <tr>
+                <th className="text-base-content font-semibold">Name</th>
+                <th className="text-base-content font-semibold">Cost</th>
+                <th className="text-base-content font-semibold">Plan</th>
+                <th className="text-base-content font-semibold">Due Date</th>
+                <th className="text-base-content font-semibold">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {subscriptions.map((sub) => (
+                <tr
+                  key={sub.id}
+                  className="hover:bg-base-200 cursor-pointer transition-colors"
+                  onClick={() => router.push(`${sub.id}`)}
+                >
+                  <td className="font-medium text-base-content">{sub.name}</td>
+                  <td className="text-base-content">
+                    <span className="font-mono">
+                      ${parseFloat(sub.cost).toFixed(2)}
+                    </span>
+                  </td>
+                  <td>
+                    <span className="badge badge-outline">
+                      {sub.plan.charAt(0).toUpperCase() + sub.plan.slice(1)}
+                    </span>
+                  </td>
+                  <td className="text-base-content font-mono">
+                    {sub.paydate.slice(0, 10)}
+                  </td>
+                  <td>
+                    <button
+                      className="btn btn-ghost btn-sm text-error hover:bg-error hover:text-error-content"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleDeletion(sub.id.toString());
+                      }}
+                    >
+                      <BinSVG />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
