@@ -30,14 +30,21 @@ export default function DashboardCards({
       <div className="card inset-shadow-sm bg-gray-70 rounded-2xl shadow-2xl">
         <div className="card-body">
           <h2 className="card-title text-200">Next Payment Due</h2>
-          {new Date(nextPaymentDue).getTime() - new Date().getTime() <=
-            24 * 60 * 60 * 1000 && <Timer date={nextPaymentDue} />}
-          {new Date(nextPaymentDue).getTime() - new Date().getTime() >
-            24 * 60 * 60 * 1000 && (
+          {nextPaymentDue === "" && (
             <p className="font-bold text-xl text-gray-400">
-              {nextPaymentDue.slice(0, 10)}
+              No upcoming payments
             </p>
           )}
+          {nextPaymentDue !== "" &&
+            new Date(nextPaymentDue).getTime() - new Date().getTime() <=
+              24 * 60 * 60 * 1000 && <Timer date={nextPaymentDue} />}
+          {nextPaymentDue !== "" &&
+            new Date(nextPaymentDue).getTime() - new Date().getTime() >
+              24 * 60 * 60 * 1000 && (
+              <p className="font-bold text-xl text-gray-400">
+                {nextPaymentDue.slice(0, 10)}
+              </p>
+            )}
         </div>
       </div>
     </div>

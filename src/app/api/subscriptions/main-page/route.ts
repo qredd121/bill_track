@@ -1,18 +1,7 @@
 import { db } from "@/db";
 import { subscriptionsTable } from "@/db/schema";
 import { mainPage } from "@/types";
-import {
-  and,
-  count,
-  eq,
-  gt,
-  gte,
-  lt,
-  min,
-  or,
-  sql,
-  sum,
-} from "drizzle-orm";
+import { and, count, eq, gt, gte, lt, min, or, sql, sum } from "drizzle-orm";
 
 export async function GET() {
   const countRes = await db.select({ count: count() }).from(subscriptionsTable);

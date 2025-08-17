@@ -1,3 +1,3 @@
-const { updateAnnual } = require("../handlers/update-handler");
+const { updateMonthly } = require("../handlers/update-handler");
 
-updateAnnual();
+updateMonthly();

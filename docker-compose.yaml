@@ -49,6 +49,6 @@ services:
       watch:
         - action: sync
           path: ./web
-          target: /src/web
+          target: /src
           ignore:
             - node_modules/
